@@ -9,7 +9,7 @@ namespace ScheduleGenerator.ViewModels
 {
     class MainViewModel : ViewModel
     {
-        private string _Title = "Title";
+        private string _Title = "Some title";
         public string Title
         {
             get => _Title;

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ScheduleGenerator.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -20,10 +21,10 @@ namespace ScheduleGenerator
 
         public static IServiceProvider Services => Host.Services;
 
-        internal static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
-        {
+        internal static void ConfigureServices(HostBuilderContext host, IServiceCollection services) => services
+            .AddViewModel()
+            ;
 
-        }
 
         protected override async void OnStartup(StartupEventArgs e)
         {
@@ -31,7 +32,6 @@ namespace ScheduleGenerator
             base.OnStartup(e);
             await host.StartAsync();
         }
-
         protected override async void OnExit(ExitEventArgs e)
         {
             using var host = Host;
