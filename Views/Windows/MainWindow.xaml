@@ -10,6 +10,12 @@
         DataContext="{Binding MainViewModel, Source={StaticResource Locator}}"
         Height="600" Width="1024" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Grid Background="#FFEEEEEE">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseLeftButtonDown">
+                <i:InvokeCommandAction Command="{Binding DragMoveWindowCommand}" CommandParameter="{Binding RelativeSource={
+             RelativeSource AncestorType={x:Type Window}}}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <StackPanel>
             <Grid Background="#FF0069C0" Height="10"/>
             <Grid Margin="5">
