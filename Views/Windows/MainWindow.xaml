@@ -28,24 +28,54 @@
                     <Button Width="30" Height="30" 
                             Background="{x:Null}" 
                             BorderBrush="{x:Null}" 
-                            Foreground="Gray" Padding="0">
+                            Foreground="Gray" Padding="0"
+                            >
                         <materialDesign:PackIcon Kind="Settings"/>
                     </Button>
                     <Button Width="30" Height="30" 
                             Background="{x:Null}" 
                             BorderBrush="{x:Null}" 
                             Foreground="Gray" Padding="0">
+                        <materialDesign:PackIcon Kind="Help"/>
+                    </Button>
+                    <Button Width="30" Height="30" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="Gray" Padding="0"
+                            Margin="0,0,5,0" Command="{Binding CloseApplicationCommand}">
                         <materialDesign:PackIcon Kind="Power"/>
-                        <Button.Command>
-                            <cmd:CloseApplicationCommand/>
-                        </Button.Command>
                     </Button>
                 </StackPanel>
             </Grid>
         </StackPanel>
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF222222">
-            <ListView Margin="0 100">
-                
+            <ListView Margin="0 100" Foreground="LightGray" 
+                      FontFamily="Times New Roman"  FontSize="26" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <ListViewItem>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Books" Width="30" Height="30" 
+                                         VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Предмети" Margin ="20 0" 
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Teacher" Width="30" Height="30" 
+                                         VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Викладачі" Margin ="20 0" 
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="PeopleGroup" Width="30" Height="30" 
+                                         VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Групи" FontSize="26" Margin ="20 0" 
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </ListViewItem>
             </ListView>
         </Grid>
     </Grid>

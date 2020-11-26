@@ -22,15 +22,22 @@ namespace ScheduleGenerator.ViewModels
         #endregion
 
         #region Команды
+        #region Команда перетаскивания окна
         public ICommand DragMoveWindowCommand { get; }
         private bool CanDragMoveWindowExecute(object parameter) => true;
         private void OnDragMoveWindowExecuted(object parameter) => (parameter as Window).DragMove();
         #endregion
-
+        #region Команда выхода из приложения
+        public ICommand CloseApplicationCommand { get; }
+        private bool CanCloseApplicationCommandExecute(object parameter) => true;
+        private void OnCloseApplicationCommandExecuted(object parameter) => App.Current.Shutdown();
+        #endregion
+        #endregion
         public MainViewModel()
         {
             #region Инициализация команд
             DragMoveWindowCommand = new LambdaCommand(OnDragMoveWindowExecuted, CanDragMoveWindowExecute);
+            CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
             #endregion
         }
     }
