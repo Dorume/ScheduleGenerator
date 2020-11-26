@@ -15,9 +15,28 @@ namespace ScheduleGenerator
     /// </summary>
     public partial class App : Application
     {
-        internal static void ConfigureServices(HostBuilderContext arg1, IServiceCollection arg2)
+        private static IHost _Host;
+        public static IHost Host => _Host ??= Programm.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
+
+        public static IServiceProvider Services => Host.Services;
+
+        internal static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            throw new NotImplementedException();
+
+        }
+
+        protected override async void OnStartup(StartupEventArgs e)
+        {
+            var host = Host;
+            base.OnStartup(e);
+            await host.StartAsync();
+        }
+
+        protected override async void OnExit(ExitEventArgs e)
+        {
+            using var host = Host;
+            base.OnExit(e);
+            await host.StopAsync();
         }
     }
 }
