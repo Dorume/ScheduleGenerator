@@ -10,6 +10,7 @@
       Title="StudentsPage">
 
     <Grid Background="Green">
-        
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Text="{Binding Title}"/>
     </Grid>
 </Page>
