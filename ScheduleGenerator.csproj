@@ -242,6 +242,26 @@
     <Compile Include="Behaviours\PageChangerBehavior.cs" />
     <Compile Include="Infrastructure\Commands\Base\Command.cs" />
     <Compile Include="Infrastructure\Commands\LambdaCommand.cs" />
+    <Compile Include="Models\ModelRegistrator.cs" />
+    <Compile Include="Models\Schedule\DayC.cs" />
+    <Compile Include="Models\Schedule\GroupC.cs" />
+    <Compile Include="Models\Schedule\Interfaces\DayOfWeekC.cs" />
+    <Compile Include="Models\Schedule\Interfaces\IGroup.cs" />
+    <Compile Include="Models\Schedule\Interfaces\IDay.cs" />
+    <Compile Include="Models\Schedule\Interfaces\IWeek.cs" />
+    <Compile Include="Models\Schedule\Interfaces\ILessons.cs" />
+    <Compile Include="Models\Schedule\Interfaces\ISubject.cs" />
+    <Compile Include="Models\Schedule\Interfaces\ISubjects.cs" />
+    <Compile Include="Models\Schedule\Interfaces\ITeacher.cs" />
+    <Compile Include="Models\Schedule\Interfaces\ITeachers.cs" />
+    <Compile Include="Models\Schedule\Interfaces\ILesson.cs" />
+    <Compile Include="Models\Schedule\LessonC.cs" />
+    <Compile Include="Models\Schedule\LessonsC.cs" />
+    <Compile Include="Models\Schedule\Subject.cs" />
+    <Compile Include="Models\Schedule\SubjectsC.cs" />
+    <Compile Include="Models\Schedule\TeacherC.cs" />
+    <Compile Include="Models\Schedule\TeachersC.cs" />
+    <Compile Include="Models\Schedule\WeekC.cs" />
     <Compile Include="Programm.cs" />
     <Compile Include="Services\Navigation\Interfaces\INavigationPage.cs" />
     <Compile Include="Services\Navigation\Interfaces\INavigationService.cs" />
@@ -293,9 +313,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

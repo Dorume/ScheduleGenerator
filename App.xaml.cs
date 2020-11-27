@@ -1,12 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ScheduleGenerator.Models;
 using ScheduleGenerator.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ScheduleGenerator
@@ -23,6 +19,7 @@ namespace ScheduleGenerator
 
         internal static void ConfigureServices(HostBuilderContext host, IServiceCollection services) => services
             .AddViewModel()
+            .AddModels()
             ;
 
 
