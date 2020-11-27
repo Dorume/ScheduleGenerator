@@ -4,13 +4,25 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ScheduleGenerator.Views.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       DataContext="{Binding TeachersViewModel, Source={StaticResource Locator}}"
       Title="TeachersPage">
 
-    <Grid Background="Black">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Text="{Binding Title}" Foreground="White"/>
+    <Grid Background="White">
+        <Grid HorizontalAlignment="Right" Background="#FF666666">
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" 
+                    Orientation="Vertical" Width="60">
+                <Button HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Background="{x:Null}" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon Kind="Add" Margin="5"/>
+                </Button>
+                <Button HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Background="{x:Null}" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon Kind="Minus"  Margin="5"/>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

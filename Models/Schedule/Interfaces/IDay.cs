@@ -4,6 +4,5 @@
     {
         DayOfWeekC Day { get; set; }
         int MaxSubjects { get; set; }
-
     }
 }
