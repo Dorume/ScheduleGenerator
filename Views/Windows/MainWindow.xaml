@@ -14,7 +14,7 @@
         <b:MouseDragWindow/>
     </i:Interaction.Behaviors>
     <Grid Background="#FFEEEEEE">
-        <StackPanel>
+        <StackPanel VerticalAlignment="Top">
             <Grid Background="#FF0069C0" Height="10"/>
             <Grid Margin="5">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0">
@@ -49,11 +49,10 @@
             </Grid>
         </StackPanel>
 
-        <Grid Margin="250 55 0 0">
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Frame Margin="250 55 0 0" Source="{Binding PageChanged, ElementName=PageChanged}" NavigationUIVisibility="Hidden">
 
-        </Grid>
-        
+        </Frame>
+
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF222222">
             <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, 
                 Duration=0:0:0.2}">
@@ -68,8 +67,9 @@
                 <i:Interaction.Behaviors>
                     <b:MouseDragWindow/>
                     <b:SideMenuAnimatio x:Name="ListViewItemChanged"/>
+                    <b:PageChangerBehavior x:Name="PageChanged"/>
                 </i:Interaction.Behaviors>
-                <ListViewItem Height="60">
+                <ListViewItem Height="60" x:Name="Subjects">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Books" Width="30" Height="30" 
                                          VerticalAlignment="Center" Margin="5"/>
@@ -77,7 +77,12 @@
                                    VerticalAlignment="Center"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Height="60">
+                <ListViewItem Height="60" x:Name="Teachers">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Selected">
+                            <i:InvokeCommandAction Command="{Binding ChangePageToTeachersViewCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Teacher" Width="30" Height="30" 
                                          VerticalAlignment="Center" Margin="5"/>
@@ -85,7 +90,7 @@
                                    VerticalAlignment="Center"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Height="60">
+                <ListViewItem Height="60" x:Name="Groups">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="PeopleGroup" Width="30" Height="30" 
                                          VerticalAlignment="Center" Margin="5"/>
@@ -96,13 +101,6 @@
             </ListView>
         </Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-            <Button Width="30" Height="30" 
-                            Background="{x:Null}" 
-                            BorderBrush="{x:Null}" 
-                            Foreground="LightGray" Padding="0"
-                            Margin="0,0,5,0">
-                <materialDesign:PackIcon Kind="Settings"/>
-            </Button>
             <Button Width="30" Height="30" 
                             Background="{x:Null}" 
                             BorderBrush="{x:Null}" 

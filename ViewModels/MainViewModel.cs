@@ -1,4 +1,5 @@
-﻿using ScheduleGenerator.Infrastructure.Commands;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ScheduleGenerator.Infrastructure.Commands;
 using ScheduleGenerator.ViewModels.Base;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,14 @@ namespace ScheduleGenerator.ViewModels
     class MainViewModel : ViewModel
     {
         #region Свойства
-        private string _Title = "Some title";
-        public string Title
+        #region 
+        private ViewModel _ViewModel;
+        public ViewModel ViewModel
         {
-            get => _Title;
-            set => Set(ref _Title, value);
+            get => _ViewModel;
+            set => Set(ref _ViewModel, value);
         }
+        #endregion
         #endregion
 
         #region Команды
@@ -32,12 +35,28 @@ namespace ScheduleGenerator.ViewModels
         private bool CanCloseApplicationCommandExecute(object parameter) => true;
         private void OnCloseApplicationCommandExecuted(object parameter) => App.Current.Shutdown();
         #endregion
+
+        #region Смена страницы на "SubjectsView"
+        public ICommand ChangePageToSubjectsViewCommand { get; }
+        private bool CanChangePageToSubjectsViewCommandExecute(object parameter) => true;
+        private void OnChangePageToSubjectsViewCommandExecuted(object parameter) =>
+            ViewModel = App.Host.Services.GetRequiredService<SubjectsViewModel>();
+        #endregion
+
+        #region Смена страницы на "TeachersView"
+        public ICommand ChangePageToTeachersViewCommand { get; }
+        private bool CanChangePageToTeachersViewExecute(object parameter) => true;
+        private void OnChangePageToTeachersViewExecuted(object parameter) =>
+            ViewModel = App.Host.Services.GetRequiredService<TeachersViewModel>();
+        #endregion
         #endregion
         public MainViewModel()
         {
             #region Инициализация команд
             DragMoveWindowCommand = new LambdaCommand(OnDragMoveWindowExecuted, CanDragMoveWindowExecute);
             CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
+            ChangePageToSubjectsViewCommand = new LambdaCommand(OnChangePageToSubjectsViewCommandExecuted, CanChangePageToSubjectsViewCommandExecute);
+            ChangePageToTeachersViewCommand = new LambdaCommand(OnChangePageToTeachersViewExecuted, CanChangePageToTeachersViewExecute);
             #endregion
         }
     }

@@ -6,6 +6,9 @@ namespace ScheduleGenerator.ViewModels
     {
         public static IServiceCollection AddViewModel(this IServiceCollection services) => services
             .AddSingleton<MainViewModel>()
+            .AddSingleton<SubjectsViewModel>()
+            .AddSingleton<TeachersViewModel>()
+            .AddSingleton<GroupsViewModel>()
             ;
     }
 }
