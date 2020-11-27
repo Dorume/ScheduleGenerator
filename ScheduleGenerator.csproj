@@ -223,7 +223,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Behaviours\MaximizeWindowBehavior.cs" />
+    <Compile Include="Behaviours\MinimizeWindowBehavior.cs" />
     <Compile Include="Behaviours\MouseDragWindow.cs" />
+    <Compile Include="Behaviours\SideMenuAnimatio.cs" />
     <Compile Include="Infrastructure\Commands\Base\Command.cs" />
     <Compile Include="Infrastructure\Commands\LambdaCommand.cs" />
     <Compile Include="Programm.cs" />

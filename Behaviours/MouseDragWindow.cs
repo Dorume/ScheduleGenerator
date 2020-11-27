@@ -22,7 +22,6 @@ namespace ScheduleGenerator.Behaviours
 
         private void OnLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
             _StartPoint = e.GetPosition(AssociatedObject);
             AssociatedObject.CaptureMouse();
             AssociatedObject.MouseMove += OnMouseMove;

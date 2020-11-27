@@ -9,38 +9,34 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:b="clr-namespace:ScheduleGenerator.Behaviours"
         DataContext="{Binding MainViewModel, Source={StaticResource Locator}}"
-        Height="600" Width="1024" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+        Height="600" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <i:Interaction.Behaviors>
         <b:MouseDragWindow/>
     </i:Interaction.Behaviors>
     <Grid Background="#FFEEEEEE">
-        <!--<i:Interaction.Triggers>
-            <i:EventTrigger EventName="MouseLeftButtonDown">
-                <i:InvokeCommandAction Command="{Binding DragMoveWindowCommand}" CommandParameter="{Binding RelativeSource={
-             RelativeSource AncestorType={x:Type Window}}}"/>
-            </i:EventTrigger>--><!--
-        </i:Interaction.Triggers>-->
         <StackPanel>
             <Grid Background="#FF0069C0" Height="10"/>
             <Grid Margin="5">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="{Binding Title}" VerticalAlignment="Center" 
-                               FontFamily="Times New Roman" FontSize="16"
-                               />
-                </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0">
                     <Button Width="30" Height="30" 
                             Background="{x:Null}" 
                             BorderBrush="{x:Null}" 
                             Foreground="Gray" Padding="0"
-                            >
-                        <materialDesign:PackIcon Kind="Settings"/>
+                            Margin="0,0,5,0">
+                        <materialDesign:PackIcon Kind="WindowMinimize"/>
+                        <i:Interaction.Behaviors>
+                            <b:MinimizeWindowBehavior/>
+                        </i:Interaction.Behaviors>
                     </Button>
                     <Button Width="30" Height="30" 
                             Background="{x:Null}" 
                             BorderBrush="{x:Null}" 
-                            Foreground="Gray" Padding="0">
-                        <materialDesign:PackIcon Kind="Help"/>
+                            Foreground="Gray" Padding="0"
+                            Margin="0,0,5,0">
+                        <materialDesign:PackIcon Kind="WindowMaximize"/>
+                        <i:Interaction.Behaviors>
+                            <b:MaximizeWindowBehavior/>
+                        </i:Interaction.Behaviors>
                     </Button>
                     <Button Width="30" Height="30" 
                             Background="{x:Null}" 
@@ -52,22 +48,28 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
+
+        <Grid Margin="250 55 0 0">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        </Grid>
+        
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF222222">
-            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.2}">
-                <Grid Margin="0 100 0 0" Background="#FF0069C0" Width="10" 
+            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, 
+                Duration=0:0:0.2}">
+                <Grid Margin="{Binding MarginSelectedMenu, ElementName=ListViewItemChanged}" Background="#FF0069C0" Width="10" 
                       HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
             </materialDesign:TransitioningContent>
-            
-            
+
+
             <ListView Margin="0 100" Foreground="LightGray" 
                       FontFamily="Times New Roman"  FontSize="26" 
                       ScrollViewer.HorizontalScrollBarVisibility="Hidden">
-                <!--<i:Interaction.Triggers>
-                    <i:EventTrigger EventName="SelectioChanged">
-                        <i:InvokeCommandAction
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>-->
-                <ListViewItem>
+                <i:Interaction.Behaviors>
+                    <b:MouseDragWindow/>
+                    <b:SideMenuAnimatio x:Name="ListViewItemChanged"/>
+                </i:Interaction.Behaviors>
+                <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Books" Width="30" Height="30" 
                                          VerticalAlignment="Center" Margin="5"/>
@@ -75,7 +77,7 @@
                                    VerticalAlignment="Center"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem>
+                <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Teacher" Width="30" Height="30" 
                                          VerticalAlignment="Center" Margin="5"/>
@@ -83,7 +85,7 @@
                                    VerticalAlignment="Center"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem>
+                <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="PeopleGroup" Width="30" Height="30" 
                                          VerticalAlignment="Center" Margin="5"/>
@@ -93,5 +95,21 @@
                 </ListViewItem>
             </ListView>
         </Grid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+            <Button Width="30" Height="30" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="LightGray" Padding="0"
+                            Margin="0,0,5,0">
+                <materialDesign:PackIcon Kind="Settings"/>
+            </Button>
+            <Button Width="30" Height="30" 
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="LightGray" Padding="0"
+                            Margin="0,0,5,0">
+                <materialDesign:PackIcon Kind="Help"/>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>
