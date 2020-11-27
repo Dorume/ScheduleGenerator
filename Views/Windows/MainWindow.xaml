@@ -6,16 +6,20 @@
         xmlns:local="clr-namespace:ScheduleGenerator"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:cmd="clr-namespace:ScheduleGenerator.Infrastructure.Commands"
-        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:b="clr-namespace:ScheduleGenerator.Behaviours"
         DataContext="{Binding MainViewModel, Source={StaticResource Locator}}"
         Height="600" Width="1024" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    <i:Interaction.Behaviors>
+        <b:MouseDragWindow/>
+    </i:Interaction.Behaviors>
     <Grid Background="#FFEEEEEE">
-        <i:Interaction.Triggers>
+        <!--<i:Interaction.Triggers>
             <i:EventTrigger EventName="MouseLeftButtonDown">
                 <i:InvokeCommandAction Command="{Binding DragMoveWindowCommand}" CommandParameter="{Binding RelativeSource={
              RelativeSource AncestorType={x:Type Window}}}"/>
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
+            </i:EventTrigger>--><!--
+        </i:Interaction.Triggers>-->
         <StackPanel>
             <Grid Background="#FF0069C0" Height="10"/>
             <Grid Margin="5">
@@ -49,9 +53,20 @@
             </Grid>
         </StackPanel>
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF222222">
+            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.2}">
+                <Grid Margin="0 100 0 0" Background="#FF0069C0" Width="10" 
+                      HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
+            </materialDesign:TransitioningContent>
+            
+            
             <ListView Margin="0 100" Foreground="LightGray" 
                       FontFamily="Times New Roman"  FontSize="26" 
                       ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <!--<i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectioChanged">
+                        <i:InvokeCommandAction
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>-->
                 <ListViewItem>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Books" Width="30" Height="30" 
